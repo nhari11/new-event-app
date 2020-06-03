@@ -1,0 +1,42 @@
+<!-- <div class="row">
+    <div class="col-md-8 col-sm-6">
+      <form [formGroup]="eventForm">
+        <input type="text" placeholder="Enter  your Name" class="form-control" formControlName="Name">
+        <input type="email" placeholder="Enter your Email" class="form-control" formControlName="Email">
+      </form>
+    </div>
+  </div> -->
+<div class="row text-center">
+  <div class="offset-md-2 col-md-8 col-sm-6">
+    <form [formGroup]="eventSearchForm">
+      <input type="text" placeholder="SEARCH EVENTS" class="form-control" formControlName="searchValue">
+    </form>
+  </div>
+</div>
+    <div style="margin-top:30px"></div>
+    
+<div class="row">
+    <input type="text" placeholder="SEARCH EVENTS" class="form-control" [(ngModel)]="searchKey">
+  <div class="col-md-12 col-sm-6 text-center" *ngIf="listEvents.length==0">
+    <h1>No Events</h1>
+  </div>
+  <div class="col-md-3 col-sm-6" *ngFor="let event of listEvents">
+    <div class="card">
+      <div class="card-body">
+          <h5 class="card-title text-center">{{event.eventTitle}}</h5>
+          <div class="row">
+        <div class="col-4" >
+            <img class="card-img-top" src="..." alt="Card image cap">
+        </div>
+        <div class="col-8">
+        <p class="card-text">{{event.eventDate}}</p>
+        <p class="card-text">Seats Available: {{event.seatsAvailable}}</p>
+        <a *ngIf="event.seatsAvailable>0" [routerLink]="['/booking']" class="btn btn-primary">Book Now</a>
+        <span *ngIf="event.seatsAvailable==0"class="btn btn-secondary">Sold Out</span>
+        </div>
+          </div>
+      </div>
+    </div>
+    <div style="margin-bottom:30px"></div>
+  </div>  
+</div>

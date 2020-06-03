@@ -1,0 +1,89 @@
+
+<div class="row">
+    <div class=" col-md-12 col-sm-6">      
+        
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Event 1</h5>
+                <div class="row">
+              <div class="col-5" >
+                  <img class="card-img-top" src="..." alt="Card image cap">
+              </div>
+              <div class="col-7">
+                  <form [formGroup]="bookingForm">
+                        <div class="form-group row" [ngClass]="{'has-error':formErrors.name }">
+                          <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                          <div class="col-sm-10" >
+                              <input type="text" placeholder="Enter your Name" class="form-control" formControlName="name"
+                              (blur)="logValidationErrors()">
+                              <span class="help-block" *ngIf="formErrors.name">
+                                {{formErrors.name}}
+                              </span>
+                          </div>
+                        </div>
+                        <div class="form-group row" [ngClass]="{'has-error':formErrors.email }">
+                            <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="email" placeholder="Enter your email" class="form-control" formControlName="email"
+                                (blur)="logValidationErrors()">
+                                <span class="help-block" *ngIf="formErrors.email">
+                                    {{formErrors.email}}
+                                  </span>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="phoneNo" class="col-sm-2 col-form-label">Phone No:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" placeholder="Enter your phone number" class="form-control" formControlName="phoneNo">
+                              </div>
+                            </div>
+                            <div class="form-group row" [ngClass]="{'has-error':formErrors.no_of_seats }">
+                                <label for="phoneNo" class="col-sm-2 col-form-label">Number of Seats:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" placeholder="Please enter the no of seats" formControlName="no_of_seats"
+                                    (blur)="logValidationErrors()">                                        
+                                        <option selected>Please enter the no of seats</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                      </select>
+                                      <span class="help-block" *ngIf="formErrors.no_of_seats">
+                                          {{formErrors.no_of_seats}}
+                                        </span>
+                                </div>
+                              </div>
+                              <div formArrayName="attendees" *ngFor="let attend of bookingForm.get('attendees').controls;let i=index;">
+                              <div class="form-group row" [formGroupName]="i" [ngClass]="{'has-error':formErrors.name_of_attendee }">
+                                  <label *ngIf="i==0" [attr.for]="'name_of_attendee'+i" class="col-sm-2 col-form-label">Attendees :</label>
+                                  <label *ngIf="i>0" [attr.for]="'name_of_attendee'+i" class="col-sm-2 col-form-label">Attendees {{i+1}}:</label>
+                                  <div class="col-sm-10">
+                                      <input type="text" class="form-control" [id]="'name_of_attendee'+i" formControlName="name_of_attendee"
+                                      (blur)="logValidationErrors()">
+                                      <span class="help-block" *ngIf="formErrors.name_of_attendee && i==0">
+                                          {{formErrors.name_of_attendee}}
+                                        </span>
+                                        <span class="help-block" *ngIf="formErrors.name_of_attendee && i>0">
+                                            {{formErrors.name_of_attendee}}#{{i+1}}
+                                          </span>
+                                  </div>
+                                </div>
+                            </div>
+                   
+                   
+                  </form>
+              
+              <a (click)="submitBooking(bookingForm)" class="btn btn-primary">Submit</a>
+              <a [routerLink]="['/list']" class="btn btn-primary">Cancel</a>
+
+              <a (click)="onLoadDataClick()" class="btn btn-primary">Load Data</a>
+              </div>
+                </div>
+            </div>
+          </div>        
+      
+    </div>
+  </div>
+      <div style="margin-top:30px"></div>

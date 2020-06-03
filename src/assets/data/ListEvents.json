@@ -1,0 +1,34 @@
+{
+    "eventDetails":[
+        {
+            "eventTitle":"Event 1",
+            "eventDate":"2-June-2020",
+            "seatsAvailable":23,
+            "eventImg":"/assets/event1.png"
+        },
+        {
+            "eventTitle":"Event 2",
+            "eventDate":"31-May-2020",
+            "seatsAvailable":0,
+            "eventImg":"/assets/event2.png"
+        },
+        {
+            "eventTitle":"Event 3",
+            "eventDate":"3-June-2020",
+            "seatsAvailable":18,
+            "eventImg":"/assets/event3.png"
+        },
+        {
+            "eventTitle":"Event 4",
+            "eventDate":"5-June-2020",
+            "seatsAvailable":17,
+            "eventImg":"/assets/event4.png"
+        },
+        {
+            "eventTitle":"Event 5",
+            "eventDate":"10-June-2020",
+            "seatsAvailable":50,
+            "eventImg":"/assets/event5.png"
+        }
+    ]
+}
